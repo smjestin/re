@@ -1,0 +1,5 @@
+[
+  { "mlsID": "123", "appraisal_value": 100000 },
+  { "mlsID": "12345", "appraisal_value": 500000 },
+  { "mlsID": "412", "appraisal_value": 600000 }
+]

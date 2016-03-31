@@ -15,6 +15,8 @@ export class AppComponent {
     
   active = true;
   valid = true;
+  validMortID = true;
+  validMlsID = true;
   model = new Appraisal();
   mortgage = new Mortgage();
   submitted = false;
@@ -43,7 +45,7 @@ export class AppComponent {
   	}
   	else {
   		console.log("Property does not exist.");
-  		valid = false;
+  		this.validMlsID = false;
   	}
   }
   
@@ -56,8 +58,8 @@ export class AppComponent {
   	insurance.mortId = this.mortgage.mortID;
   	insurance.value = this.model.appraisal_value;
   	this._demoService.submitINSincInfo(insurance).subscribe(
-  		data => console.log('Data: ${data}'), 
-  		err => err => console.error(err)
+  		data => this.submitted = false, this.processed = true, this.validMortID = true,
+  		err => this.validMortID = false,
   	);
   }
 

@@ -2,6 +2,12 @@
   <div  [hidden]="submitted">
     <h1>RE Appraisal</h1>
     <form *ngIf="active" (ngSubmit)="onMlsIDSubmit()" #appraisalForm="ngForm">
+      <div [hidden]="validMlsID" class="alert alert-danger">
+          That MlsID does not exist. 
+      </div>
+      <div [hidden]="!processed" class="alert alert-success">
+          Mortgage ID and appraisal value have been passed to INSinc!
+      </div>
       <div class="form-group">
         <label for="name">Mls ID:</label>
         <input type="text" class="form-control" required
@@ -24,6 +30,9 @@
     <br>
     
     <form *ngIf="active" (ngSubmit)="onINSincSubmit()" #mortgageForm="ngForm">
+   	  <div [hidden]="validMortID" class="alert alert-danger">
+          Invalid mortgage ID.
+      </div>
        <div class="form-group">
         <label for="name">Full Name:</label>
         <input type="text" class="form-control" required
